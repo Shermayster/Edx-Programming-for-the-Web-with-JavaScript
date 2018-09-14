@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Lists from './Lists.js';
 import AddList from './AddList.js';
 import './App.css';
+import Lists from './Lists.js';
 
 class App extends Component {
 
@@ -21,18 +21,29 @@ class App extends Component {
    */
   handleAddList(s) {
       // Implement this function!
+      const updatedItems = {...this.state.items};
+      updatedItems[s] = [];
+      this.setState({
+        lists: [...this.state.lists, s],
+        items: updatedItems
+      })
   }
 
   /**
    * This function takes the state of an AddItem component as its parameter
-   * and updates the state of this App component by adding a new value to the 
+   * and updates the state of this App component by adding a new value to the
    * appropriate array in the "items" property of the state. Keep in mind that
    * the property names of "items" are the names of each list, which is mapped
-   * to an array of the items in that list. After updating the "items" part of 
+   * to an array of the items in that list. After updating the "items" part of
    * the state, this function  should then re-render this App component.
    */
   handleAddItem(s) {
-      // Implement this function!
+    // Implement this function!
+    const updatedItems = {...this.state.items};
+    updatedItems[s.list] = [...updatedItems[s.list], {name:s.itemName}];
+    this.setState({
+      items: updatedItems
+    })
   }
 
   /**
