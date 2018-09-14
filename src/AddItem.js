@@ -12,7 +12,7 @@ class AddItem extends Component {
   handleSubmit = (e) => {
     e.preventDefault(); // this prevents the page from reloading -- do not delete this line!
       // Implement the rest of this function here!
-      const item = document.querySelector(`#add${this.props.idName}>input[type="text"]`).value;
+      const item = this.refs['id'].value;
       this.props.addItem({list: this.props.idName, itemName: item});
   }
 

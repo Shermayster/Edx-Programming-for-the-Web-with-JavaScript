@@ -6,7 +6,9 @@ class AddList extends Component {
   handleSubmit = (e) => {
     e.preventDefault(); // this prevents the page from reloading -- do not delete this line!
     // Implement the rest of this function here!
-    const listId = document.querySelector('#newID').value;
+    console.log('TCL: AddList -> handleSubmit -> e', e.elements);
+
+    const listId = this.refs['id'].value;
     if (listId) {
       this.props.addList(listId);
     }
