@@ -56,18 +56,23 @@ class FontChooser extends React.Component {
   render() {
     return (
       <div>
-        <input onChange={this.toggleBold} type="checkbox" id="boldCheckbox" hidden={this.state.isHidden}/>
+        <input onChange={this.toggleBold}
+        checked={this.state.bold}
+        type="checkbox" id="boldCheckbox" hidden={this.state.isHidden}/>
         <button onClick={this.decreaseSize} id="decreaseButton" hidden={this.state.isHidden}>-</button>
-        <span onDoubleClick={this.setToDefault} id="fontSizeSpan" hidden={this.state.isHidden}>{this.state.size}</span>
+        <span onDoubleClick={this.setToDefault}
+        style={{
+          color: (
+            this.state.size == this.state.min ||
+            this.state.size == this.state.max
+            ) ?  'red' : 'black'
+        }}
+        id="fontSizeSpan" hidden={this.state.isHidden}>{this.state.size}</span>
         <button onClick={this.increaseSize} id="increaseButton" hidden={this.state.isHidden}>+</button>
         <span
         style={{
           fontWeight: this.state.bold ? 'bold' : 'normal',
           fontSize: this.state.size,
-          color: (
-            this.state.size == this.state.min ||
-            this.state.size == this.state.max
-            ) ?  'red' : 'black'
         }}
         onClick={this.toggleIsHidden}
         id="textSpan">{this.props.text}</span>
